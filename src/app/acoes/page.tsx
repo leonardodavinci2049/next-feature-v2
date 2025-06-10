@@ -1,4 +1,5 @@
 import React from "react";
+import UpdateUrlButton from "./components/updateButton";
 const API_URL = process.env.API_URL;
 
 type ApiLuaResponse = {
@@ -44,7 +45,7 @@ const ActionPage = async () => {
           </li>
         </ul>
         <div className="flex justify-center items-center mt-4">
-          {/* <UpdateUrlButton /> */}
+          <UpdateUrlButton />
         </div>
       </div>
     );
