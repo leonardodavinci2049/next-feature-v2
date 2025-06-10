@@ -1,7 +1,6 @@
 import { Produto } from "@/services/api/server-fetch";
 import ProdutoCard from "./ProdutoCard";
 
-
 interface ProdutosListProps {
   produtos: Produto[];
 }
@@ -16,12 +15,9 @@ export default function ProdutosList({ produtos }: ProdutosListProps) {
   }
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">
-          Nossos Produtos
-        </h1>
-        <p className="text-gray-600">
+    <div className="w-full">
+      <div className="mb-6">
+        <p className="text-muted-foreground">
           Encontrados {produtos.length} produtos disponíveis
         </p>
       </div>

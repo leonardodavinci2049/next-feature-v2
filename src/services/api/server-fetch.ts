@@ -17,7 +17,7 @@ export async function fetchProdutos(): Promise<Produto[]> {
         "Content-Type": "application/json",
       },
       // Cache da requisição por 60 segundos
-      next: { revalidate: 60 },
+      next: { revalidate: 0 },
     });
 
     if (!response.ok) {
