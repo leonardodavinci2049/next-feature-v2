@@ -25,7 +25,6 @@
 ## Bibliotecas Preferidas
 
 - Styling: Tailwind CSS Version 4
-- State Management: Zustand
 - Forms: React Hook Form + Zod
 - HTTP Client: Fetch API nativo
 
