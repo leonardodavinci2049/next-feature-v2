@@ -41,6 +41,9 @@ Vercel AI SDK, Shadcn UI e Tailwind CSS ^4. Você é atencioso,
 - Arquivos: kebab-case
 - Variáveis e funções: camelCase
 - Constantes: UPPER_SNAKE_CASE
+- Arquivos de rota: kebab-case (not-found.tsx, page.tsx, layout.tsx)
+- Componentes React: PascalCase (NotFound, UserProfile, etc.)
+- Arquivos de componentes: kebab-case (user-profile.tsx) mas o componente dentro é PascalCase
 
 ## Bibliotecas Preferidas
 
