@@ -112,13 +112,17 @@ const CursoPage = async ({ params }: CursoPageProps) => {
 // Gerar páginas estáticas para todos os cursos
 export async function generateStaticParams() {
   try {
+    // 1. Busca todos os cursos disponíveis
     const cursos = await getCursos();
 
+    // 2. Mapeia cada curso para um objeto com o parâmetro 'slug'
+    // Isso informa ao Next.js: "gere páginas para estes slugs"
     return cursos.map((curso) => ({
-      slug: curso.slug,
+      slug: curso.slug, // Este valor será usado como [slug] na rota
     }));
   } catch (error) {
     console.error("Erro ao gerar parâmetros estáticos:", error);
+    // 3. Em caso de erro, retorna array vazio (nenhuma página será pré-gerada)
     return [];
   }
 }
