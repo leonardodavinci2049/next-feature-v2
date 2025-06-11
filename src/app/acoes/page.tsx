@@ -1,5 +1,7 @@
+
 import React from "react";
-import UpdateUrlButton from "../components/UpdateButton";
+import UpdateUrlButton from "./components/UpdateButton";
+
 
 const API_URL = process.env.API_URL;
 
@@ -9,20 +11,8 @@ type ApiLuaResponse = {
   atualizada: string;
 };
 
-/**
- * Página de detalhes da ação.
- * @param params Parâmetros da rota contendo o identificador da ação.
- */
-export type AcaoPageParams = {
-  params: {
-    acao: string;
-  };
-};
-
-const AcaoPage = async ({ params }: AcaoPageParams) => {
-  const { acao } = await params;
-  console.log("params", acao);
-  const response = await fetch(`${API_URL}/acoes/${acao}`, {
+const ActionPage = async () => {
+  const response = await fetch(`${API_URL}/acoes/lua`, {
     cache: "no-store", // Ensures the data is always fresh
     //cache: "force-cache", // Use cache for performance, but can be changed based on requirements
     //  next: { revalidate: 60 }, // Revalidate every 60 seconds
@@ -59,4 +49,4 @@ const AcaoPage = async ({ params }: AcaoPageParams) => {
   );
 };
 
-export default AcaoPage;
+export default ActionPage;

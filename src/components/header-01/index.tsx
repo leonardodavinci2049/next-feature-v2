@@ -16,7 +16,7 @@ import { Suspense } from "react";
 const TopMenu = [
   { name: "Acoes", href: "/acoes" },
   { name: "Produto", href: "/product" },
-  { name: "FAQ", href: "#faq" },
+  { name: "Cursos", href: "/cursos" },
 ];
 
 export default function Header01() {
