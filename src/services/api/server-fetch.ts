@@ -7,11 +7,11 @@ export interface Produto {
   estoque: number;
   importado: number;
 }
-
+const API_BASE_URL = process.env.API_URL;
 // Função para buscar todos os produtos
 export async function fetchProdutos(): Promise<Produto[]> {
   try {
-    const response = await fetch("https://api.origamid.online/produtos", {
+     const response = await fetch(`${API_BASE_URL}/produtos`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +71,7 @@ export async function fetchProdutoPorIdDireto(
   id: number
 ): Promise<Produto | null> {
   try {
-    const response = await fetch(`https://api.origamid.online/produtos/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/produtos/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

@@ -19,12 +19,13 @@ export interface Aula {
   ordem: number;
 }
 
-const API_BASE_URL = 'https://api.origamid.online/cursos';
+const API_BASE_URL = process.env.API_URL;
+
 
 // Buscar todos os cursos
 export async function getCursos(): Promise<Curso[]> {
   try {
-    const response = await fetch(API_BASE_URL, {
+    const response = await fetch(`${API_BASE_URL}/cursos`, {
       next: { revalidate: 3600 } // Cache por 1 hora
     });
     
