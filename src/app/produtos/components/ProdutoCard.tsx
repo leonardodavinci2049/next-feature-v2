@@ -9,7 +9,7 @@ interface ProdutoCardProps {
 
 export default function ProdutoCard({ produto }: ProdutoCardProps) {
   return (
-    <Link href={`/product/${produto.id}`} className="block">
+    <Link href={`/produtos/${produto.id}`} className="block">
       <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
         <div className="flex justify-between items-start mb-3">
           <h3 className="text-lg font-semibold text-gray-800 line-clamp-2">

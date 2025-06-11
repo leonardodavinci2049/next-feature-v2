@@ -20,7 +20,7 @@ const page = () => {
                 Gerencie todos os seus produtos aqui
               </p>
             </div>
-            <Link href="/product/addProduct">
+            <Link href="/produtos/addProduct">
               <Button className="flex items-center gap-2">
                 <Plus className="h-4 w-4" />
                 Adicionar Novo Produto

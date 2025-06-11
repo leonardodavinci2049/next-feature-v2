@@ -43,7 +43,8 @@ export async function getCursos(): Promise<Curso[]> {
 // Buscar um curso específico por slug (inclui as aulas)
 export async function getCurso(slug: string): Promise<Curso> {
   try {
-    const response = await fetch(`${API_BASE_URL}/${slug}`, {
+    console.log(`Buscando curso: ${API_BASE_URL}/cursos/${slug}`);
+    const response = await fetch(`${API_BASE_URL}/cursos/${slug}`, {
       next: { revalidate: 3600 } // Cache por 1 hora
     });
     
@@ -61,7 +62,7 @@ export async function getCurso(slug: string): Promise<Curso> {
 // Buscar uma aula específica por slug do curso e slug da aula
 export async function getAula(cursoSlug: string, aulaSlug: string): Promise<Aula> {
   try {
-    const response = await fetch(`${API_BASE_URL}/${cursoSlug}/${aulaSlug}`, {
+    const response = await fetch(`${API_BASE_URL}/cursos/${cursoSlug}/${aulaSlug}`, {
       next: { revalidate: 3600 } // Cache por 1 hora
     });
     

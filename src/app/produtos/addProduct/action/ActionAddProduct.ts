@@ -75,8 +75,8 @@ export async function ActionAddProduct(
       throw new Error("Failed to add product");
     }
 
-    revalidatePath("/product");
-    redirect("/product");
+    revalidatePath("/produtos");
+    redirect("/produtos");
   } catch (error) {
     console.error("Error adding product:", error);
     return {
