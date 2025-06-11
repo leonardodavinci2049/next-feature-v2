@@ -1,3 +1,5 @@
+"use client";
+
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import { Button, buttonVariants } from "@/components/ui/button";
 import ModeToggle from "./mode-toggle";
@@ -17,6 +19,7 @@ const TopMenu = [
   { name: "Acoes", href: "/acoes" },
   { name: "Produtos", href: "/produtos" },
   { name: "Cursos", href: "/cursos" },
+  { name: "Animais", href: "/animais" },
 ];
 
 export default function Header01() {
@@ -84,13 +87,13 @@ export default function Header01() {
                 </SheetHeader>
                 <div className="my-4 flex flex-col gap-0">
                   {TopMenu.map((menu, idx) => (
-                    <a
+                    <Link
                       key={idx}
-                      href="#"
+                      href={menu.href}
                       className="font-semibold text-lg py-2"
                     >
                       {menu.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
                 <div className="border-t pt-4">
