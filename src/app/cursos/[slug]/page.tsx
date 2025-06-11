@@ -1,12 +1,46 @@
 import { formatarTempo, getCurso, getCursos } from "@/services/api/cursos";
 import Link from "next/link";
-
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 interface CursoPageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+/**
+ * Gera metadados dinâmicos para a página do curso
+ */
+export async function generateMetadata({
+  params,
+}: CursoPageProps): Promise<Metadata> {
+  try {
+    const { slug } = await params;
+    const curso = await getCurso(slug);
+
+    return {
+      title: `${curso.nome} | Cursos`,
+      description: curso.descricao,
+      openGraph: {
+        title: curso.nome,
+        description: curso.descricao,
+        type: "website",
+        siteName: "Plataforma de Cursos",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: curso.nome,
+        description: curso.descricao,
+      },
+    };
+  } catch (error) {
+    console.error("Erro ao gerar metadados:", error);
+    return {
+      title: "Curso não encontrado",
+      description: "O curso solicitado não foi encontrado.",
+    };
+  }
 }
 
 const CursoPage = async ({ params }: CursoPageProps) => {

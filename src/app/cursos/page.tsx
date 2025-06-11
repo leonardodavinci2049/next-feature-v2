@@ -3,6 +3,11 @@ import Link from "next/link";
 import { BookOpen, Clock, Play } from "lucide-react";
 import { formatarTempo, getCursos } from "@/services/api/cursos";
 
+export const metadata = {
+  title: "Cursos - Devs Academy",
+  description: "Explore nossa coleção de cursos disponíveis",
+};
+
 const CursosPage = async () => {
   try {
     const cursos = await getCursos();
