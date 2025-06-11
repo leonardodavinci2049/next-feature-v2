@@ -5,6 +5,8 @@ import { Plus } from "lucide-react";
 import LoadingProdutos from "./components/LoadingProdutos";
 import ProdutosContainer from "./components/ProdutosContainer";
 
+// Forçar renderização dinâmica
+export const dynamic = "force-dynamic";
 
 const page = () => {
   return (

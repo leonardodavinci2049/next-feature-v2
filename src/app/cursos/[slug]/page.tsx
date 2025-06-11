@@ -4,14 +4,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 interface CursoPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 const CursoPage = async ({ params }: CursoPageProps) => {
   try {
-    const curso = await getCurso(params.slug);
+    const { slug } = await params;
+    const curso = await getCurso(slug);
 
     return (
       <div className="container mx-auto px-4 py-8">
@@ -111,7 +112,6 @@ const CursoPage = async ({ params }: CursoPageProps) => {
 // Gerar páginas estáticas para todos os cursos
 export async function generateStaticParams() {
   try {
-
     const cursos = await getCursos();
 
     return cursos.map((curso) => ({

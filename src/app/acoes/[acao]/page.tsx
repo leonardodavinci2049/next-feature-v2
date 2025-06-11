@@ -14,9 +14,9 @@ type ApiLuaResponse = {
  * @param params Parâmetros da rota contendo o identificador da ação.
  */
 export type AcaoPageParams = {
-  params: {
+  params: Promise<{
     acao: string;
-  };
+  }>;
 };
 
 const AcaoPage = async ({ params }: AcaoPageParams) => {
