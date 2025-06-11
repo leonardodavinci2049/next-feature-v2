@@ -5,7 +5,7 @@ import {
   getCursos,
 } from "@/services/api/cursos";
 import Link from "next/link";
-
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 interface AulaPageProps {
@@ -13,6 +13,53 @@ interface AulaPageProps {
     slug: string;
     aulaSlug: string;
   }>;
+}
+
+/**
+ * Gera metadados dinâmicos para a página da aula
+ */
+export async function generateMetadata({
+  params,
+}: AulaPageProps): Promise<Metadata> {
+  try {
+    const { slug, aulaSlug } = await params;
+    const curso = await getCurso(slug);
+    const aula = await getAula(slug, aulaSlug);
+
+    if (!aula) {
+      return {
+        title: "Aula não encontrada",
+        description: "A aula solicitada não foi encontrada.",
+      };
+    }
+
+    const titulo = `${aula.nome} - ${curso.nome}`;
+    const descricao = `Aula ${aula.ordem}: ${
+      aula.descricao
+    } | Duração: ${formatarTempo(aula.tempo)}`;
+
+    return {
+      title: titulo,
+      description: descricao,
+      openGraph: {
+        title: titulo,
+        description: descricao,
+        type: "video.episode",
+        siteName: "Plataforma de Cursos",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: titulo,
+        description: descricao,
+      },
+    };
+  } catch (error) {
+    console.error("Erro ao gerar metadados:", error);
+    return {
+      title: "Aula não encontrada",
+      description: "A aula solicitada não foi encontrada.",
+    };
+  }
 }
 
 const AulaPage = async ({ params }: AulaPageProps) => {

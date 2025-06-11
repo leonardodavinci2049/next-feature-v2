@@ -1,11 +1,29 @@
 import Link from "next/link";
-
+import { Metadata } from "next";
 import { BookOpen, Clock, Play } from "lucide-react";
 import { formatarTempo, getCursos } from "@/services/api/cursos";
 
-export const metadata = {
-  title: "Cursos - Devs Academy",
-  description: "Explore nossa coleção de cursos disponíveis",
+/**
+ * Gera metadados estáticos para a página de cursos
+ */
+export const metadata: Metadata = {
+  title: "Cursos | Plataforma de Ensino",
+  description:
+    "Explore nossa coleção completa de cursos online. Aprenda no seu ritmo com conteúdo de qualidade e instrutores especializados.",
+  keywords: ["cursos", "educação", "aprendizado", "online", "ensino"],
+  openGraph: {
+    title: "Cursos | Plataforma de Ensino",
+    description:
+      "Explore nossa coleção completa de cursos online. Aprenda no seu ritmo com conteúdo de qualidade.",
+    type: "website",
+    siteName: "Plataforma de Ensino",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cursos | Plataforma de Ensino",
+    description:
+      "Explore nossa coleção completa de cursos online. Aprenda no seu ritmo com conteúdo de qualidade.",
+  },
 };
 
 const CursosPage = async () => {
@@ -14,11 +32,7 @@ const CursosPage = async () => {
 
     return (
       <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
- 
-
         <div className="space-y-4">
-     
-
           <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
             <div className="flex items-center justify-between mb-6">
               <div>
@@ -76,11 +90,7 @@ const CursosPage = async () => {
     console.error("Erro ao carregar cursos:", error);
     return (
       <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
- 
-
         <div className="space-y-4">
-    
-
           <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
             <div className="text-center">
               <h1 className="text-2xl font-bold text-red-600 mb-4">
